@@ -1,0 +1,18 @@
+{
+  "name": "what-gpt",
+  "version": "1.0.0",
+  "description": "Whatsapp bot for GPT-3. Made with Venom and OpenAI.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "openai": "^3.1.0",
+    "venom-bot": "^4.3.7",
+    "express": " ^4.17.1 "
+  }
+}

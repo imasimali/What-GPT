@@ -1,0 +1,38 @@
+{
+  "name": "Open AI - Whatsapp Bot",
+  "description": "Whatsapp bot for GPT-3. Made with Venom and OpenAI.",
+  "keywords": ["whatsapp", "bot", "api", "venombot"],
+  "repository": "https://github.com/imasimali/what-gpt",
+  "success_url": "/",
+
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/jontewks/puppeteer-heroku-buildpack"
+    }
+  ],
+
+  "env": {
+    "OPENAI_KEY": {
+      "required": true,
+      "value": ""
+    },
+    "ORGANIZATION_ID": {
+      "required": true,
+      "value": ""
+    },
+    "PHONE_NUMBER": {
+      "required": true,
+      "value": ""
+    }
+  }
+}
