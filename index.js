@@ -76,6 +76,7 @@ const commands = (client, message) => {
   switch (firstWord) {
     case botCommands.davinci3:
       const question = message.text.substring(message.text.indexOf(" "));
+      console.log(process.env.BOT_NUMBER, message.to, message.from);
       getDavinciResponse(question).then((response) => {
         /*
          * We will do a validation on message.from
