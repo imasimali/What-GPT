@@ -12,7 +12,6 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": " ^4.17.1 ",
-    "heroku-self-ping": "^2.0.1",
     "openai": "^3.1.0",
     "venom-bot": "^4.3.7"
   }
