@@ -30,7 +30,7 @@
       "required": true,
       "value": ""
     },
-    "PHONE_NUMBER": {
+    "BOT_NUMBER": {
       "required": true,
       "value": ""
     }
