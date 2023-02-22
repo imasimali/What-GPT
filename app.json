@@ -5,13 +5,6 @@
   "repository": "https://github.com/imasimali/what-gpt",
   "success_url": "/",
 
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "eco"
-    }
-  },
-
   "buildpacks": [
     {
       "url": "heroku/nodejs"
