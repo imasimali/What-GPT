@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Self Ping - Keep Alive
-hsp(`https://${process.env.HEROKU_APP_NAME}.herokuapp.com`);
+hsp.default(`https://${process.env.HEROKU_APP_NAME}.herokuapp.com`);
 
 app.get("/", (req, res) => {
   res.send("Hello World! 🤖 - Chat GPT Bot - Created by @imasimali 🚀");
