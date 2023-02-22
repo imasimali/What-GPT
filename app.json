@@ -33,10 +33,6 @@
     "PHONE_NUMBER": {
       "required": true,
       "value": ""
-    },
-    "HEROKU_APP_NAME": {
-      "required": true,
-      "value": ""
     }
   }
 }
