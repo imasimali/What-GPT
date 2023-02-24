@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 import { create } from "venom-bot";
 import { writeUserData } from "./firebaseDB.js";
-import { getHistory } from "./utils.js";
+import { getHistory, AI_NAME } from "./utils.js";
 
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -41,6 +41,7 @@ const getDavinciResponse = async (clientText, messageSender) => {
     messageSender,
     clientText
   );
+  console.log(conversation_history.split(" ").length);
 
   const options = {
     model: "text-davinci-003", // GPT model to use
@@ -56,7 +57,7 @@ const getDavinciResponse = async (clientText, messageSender) => {
       botResponse += text;
     });
     // trim the Friendly-AI name from the response
-    botResponse = botResponse.replace("Friendly-AI:", "");
+    botResponse = botResponse.replace(AI_NAME + ":", "");
 
     writeUserData(BOT_NUMBER, messageSender, clientText, botResponse.trim());
     return `Chat GPT 🤖\n\n${botResponse.trim()}`;

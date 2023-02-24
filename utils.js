@@ -26,12 +26,11 @@ export const getHistory = async (userID, messageSender, question) => {
   // Add current question to conversation history
   conversation_history += `${getUserID(messageSender)}: ${question.trim()}\n`;
 
-  // trim the conversation history to less than 4000 words
-  // to avoid the GPT-3 API error
-  if (conversation_history.split(" ").length > 3500) {
+  // trim the conversation history to less than 4000 tokens for GPT-3
+  if (conversation_history.split(" ").length > 2000) {
     conversation_history = conversation_history
       .split(" ")
-      .slice(-3500)
+      .slice(conversation_history.split(" ").length - 2000)
       .join(" ");
   }
 
