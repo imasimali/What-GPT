@@ -1,5 +1,5 @@
 import { readUserData } from "./firebaseDB.js";
-export const AI_NAME = "Friendly-AI";
+export const AI_NAME = "GENIUS-AI";
 
 export const getUserID = (userID) => {
   if (userID.includes("-")) {
