@@ -28,7 +28,7 @@ export const getHistory = async (userID, messageSender, question) => {
 
   // trim the conversation history to less than 4000 words
   // to avoid the GPT-3 API error
-  if (conversation_history.split(" ").length > 4000) {
+  if (conversation_history.split(" ").length > 3800) {
     conversation_history = conversation_history
       .split(" ")
       .slice(-3800)
