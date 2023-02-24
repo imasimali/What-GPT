@@ -42,7 +42,7 @@ export const writeUserData = async function (
 
 export const readUserData = async function (userId) {
   const user = getUserID(userId);
-  const userDBRef = query(ref(db), limitToLast(20));
+  const userDBRef = query(ref(db), limitToLast(50));
   const response = await get(child(userDBRef, user + "/"))
     .then((snapshot) => {
       if (snapshot.exists()) {
