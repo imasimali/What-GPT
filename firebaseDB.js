@@ -6,6 +6,8 @@ import {
   get,
   child,
   push,
+  query,
+  limitToLast,
   serverTimestamp,
 } from "firebase/database";
 import { getUserID, AI_NAME } from "./utils.js";
@@ -40,7 +42,7 @@ export const writeUserData = async function (
 
 export const readUserData = async function (userId) {
   const user = getUserID(userId);
-  const userDBRef = ref(db);
+  const userDBRef = query(ref(db), limitToLast(20));
   const response = await get(child(userDBRef, user + "/"))
     .then((snapshot) => {
       if (snapshot.exists()) {
