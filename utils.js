@@ -31,7 +31,7 @@ export const getHistory = async (userID, messageSender, question) => {
   if (conversation_history.split(" ").length > 4000) {
     conversation_history = conversation_history
       .split(" ")
-      .slice(-4000)
+      .slice(-3800)
       .join(" ");
   }
 
