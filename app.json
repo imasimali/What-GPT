@@ -26,6 +26,14 @@
     "BOT_NUMBER": {
       "required": true,
       "value": ""
+    },
+    "FIREBASE_APIKEY": {
+      "required": true,
+      "value": ""
+    },
+    "FIREBASE_DB_URL": {
+      "required": true,
+      "value": ""
     }
   }
 }

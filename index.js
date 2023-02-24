@@ -1,8 +1,10 @@
 import { Configuration, OpenAIApi } from "openai";
 import { create } from "venom-bot";
+import { writeUserData } from "./firebaseDB.js";
+import { getHistory } from "./utils.js";
+
 import * as dotenv from "dotenv";
 dotenv.config();
-
 const BOT_NUMBER = process.env.BOT_NUMBER + "@c.us";
 
 // Start Express Server
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 // End
 
+// BOT START
 create({
   session: "Chat-GPT",
   multidevice: true,
@@ -32,12 +35,18 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const getDavinciResponse = async (clientText) => {
+const getDavinciResponse = async (clientText, messageSender) => {
+  const conversation_history = await getHistory(
+    BOT_NUMBER,
+    messageSender,
+    clientText
+  );
+
   const options = {
     model: "text-davinci-003", // GPT model to use
-    prompt: clientText, // Text submitted by the user
+    prompt: conversation_history, // Text submitted by the user
     temperature: 1, // Variation level of generated responses, 1 is the maximum
-    max_tokens: 4000, // Number of tokens (words) to be returned by the bot, 4000 is the maximum
+    max_tokens: 100, // Number of tokens (words) to be returned by the bot, 4000 is the maximum
   };
 
   try {
@@ -46,6 +55,10 @@ const getDavinciResponse = async (clientText) => {
     response.data.choices.forEach(({ text }) => {
       botResponse += text;
     });
+    // trim the Friendly-AI name from the response
+    botResponse = botResponse.replace("Friendly-AI:", "");
+
+    writeUserData(BOT_NUMBER, messageSender, clientText, botResponse.trim());
     return `Chat GPT 🤖\n\n${botResponse.trim()}`;
   } catch (e) {
     return `❌ OpenAI Response Error: ${e.response.data.error.message}`;
@@ -78,14 +91,8 @@ const commands = (client, message) => {
   switch (firstWord) {
     case botCommands.davinci3:
       const question = message.text.substring(message.text.indexOf(" "));
-      getDavinciResponse(question).then((response) => {
-        /*
-         * We will do a validation on message.from
-         * in case we send a command
-         * the response is not sent to
-         * our own number and yes to
-         * the person or group I sent it to
-         */
+      getDavinciResponse(question, message.from).then((response) => {
+        // Check if the message is from the bot or the user
         client.sendText(
           message.from === BOT_NUMBER ? message.to : message.from,
           response
