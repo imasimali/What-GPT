@@ -6,8 +6,8 @@ The integration will allow users to interact with ChatGPT via WhatsApp text mess
 
 ## Technologies
 
-- [OpenIA](https://beta.openai.com/)
-- [venom-bot](https://github.com/orkestral/venom)
+- [OpenAI](https://beta.openai.com/)
+- [Venom-Bot](https://github.com/orkestral/venom)
 
 ## Run the project
 
@@ -18,6 +18,8 @@ Clone this project with the command:
 ```
 
 Go to the .env.example file and rename it to .env, and change the necessary values ​​for it to work.
+
+You can get api keys for .env from [OpenAI](https://platform.openai.com/account/api-keys/)
 
 Now install the project dependencies with the command:
 
