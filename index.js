@@ -1,11 +1,7 @@
-import { Configuration, OpenAIApi } from "openai";
-import { create } from "venom-bot";
-import { writeUserData } from "./firebaseDB.js";
-import { getHistory, AI_NAME } from "./utils.js";
-
 import * as dotenv from "dotenv";
 dotenv.config();
-const BOT_NUMBER = process.env.BOT_NUMBER + "@c.us";
+import { create } from "venom-bot";
+import { getDavinciResponse, getDalleResponse, BOT_NUMBER } from "./openai.js";
 
 // Start Express Server
 import express from "express";
@@ -27,58 +23,6 @@ create({
   .catch((error) => {
     console.log(error);
   });
-
-const configuration = new Configuration({
-  organization: process.env.ORGANIZATION_ID,
-  apiKey: process.env.OPENAI_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
-
-const getDavinciResponse = async (clientText, messageSender) => {
-  const conversation_history = await getHistory(
-    BOT_NUMBER,
-    messageSender,
-    clientText
-  );
-
-  const options = {
-    model: "text-davinci-003", // GPT model to use
-    prompt: conversation_history, // Text submitted by the user
-    temperature: 1, // Variation level of generated responses, 1 is the maximum
-    max_tokens: 100, // Number of tokens (words) to be returned by the bot, 4000 is the maximum
-  };
-
-  try {
-    const response = await openai.createCompletion(options);
-    let botResponse = "";
-    response.data.choices.forEach(({ text }) => {
-      botResponse += text;
-    });
-    // trim the Friendly-AI name from the response
-    botResponse = botResponse.replace(AI_NAME + ":", "");
-
-    writeUserData(BOT_NUMBER, messageSender, clientText, botResponse.trim());
-    return `Chat GPT 🤖\n\n${botResponse.trim()}`;
-  } catch (e) {
-    return `❌ OpenAI Response Error: ${e.response.data.error.message}`;
-  }
-};
-
-const getDalleResponse = async (clientText) => {
-  const options = {
-    prompt: clientText, // Image description
-    n: 1, // // Number of images to be generated
-    size: "1024x1024", // Image size
-  };
-
-  try {
-    const response = await openai.createImage(options);
-    return response.data.data[0].url;
-  } catch (e) {
-    return `❌ OpenAI Response Error: ${e.response.data.error.message}`;
-  }
-};
 
 const commands = (client, message) => {
   const botCommands = {

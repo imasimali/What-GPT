@@ -1,3 +1,5 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import { initializeApp } from "firebase/app";
 import {
   getDatabase,
@@ -11,15 +13,14 @@ import {
   serverTimestamp,
 } from "firebase/database";
 import { getUserID, AI_NAME } from "./utils.js";
-import * as dotenv from "dotenv";
-dotenv.config();
 
-const firebase_app = initializeApp({
-  apiKey: process.env.FIREBASE_APIKEY,
-  databaseURL: process.env.FIREBASE_DB_URL,
-});
+const firebase_app =
+  process.env.FIREBASE_DB_URL &&
+  initializeApp({
+    databaseURL: process.env.FIREBASE_DB_URL,
+  });
 
-const db = getDatabase(firebase_app);
+const db = process.env.FIREBASE_DB_URL && getDatabase(firebase_app);
 
 export const writeUserData = async function (
   userId,
@@ -51,9 +52,9 @@ export const readUserData = async function (userId) {
         return `{
           'INITIAL': {
             sender: ${AI_NAME},
-            question: "Hello, who are you?",
+            question: "Hello",
             response:
-              "Hi, I'm a friendly artificial intelligence bot. I'm here to answer your questions.",
+              "Hi, I'm here to answer your questions.",
           },
         }`;
       }

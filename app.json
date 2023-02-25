@@ -23,20 +23,16 @@
       "required": true,
       "value": ""
     },
-    "BOT_PERSONALITY": {
-      "required": true,
-      "value": ""
-    },
     "BOT_NUMBER": {
       "required": true,
       "value": ""
     },
-    "FIREBASE_APIKEY": {
-      "required": true,
+    "BOT_PERSONALITY": {
+      "required": false,
       "value": ""
     },
     "FIREBASE_DB_URL": {
-      "required": true,
+      "required": false,
       "value": ""
     }
   }

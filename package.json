@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ."
+    "start": "node index.js"
   },
   "author": "Asim Ali <hi@asimali.net>",
   "license": "Apache-2.0",
