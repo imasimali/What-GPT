@@ -41,7 +41,6 @@ const getDavinciResponse = async (clientText, messageSender) => {
     messageSender,
     clientText
   );
-  console.log(conversation_history.split(" ").length);
 
   const options = {
     model: "text-davinci-003", // GPT model to use
