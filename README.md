@@ -1,6 +1,6 @@
 # what-gpt
 
-The integration will allow users to interact with ChatGPT via WhatsApp text messages, providing automated responses based on their questions and commands with message history saved on Firebase Realtime Database.
+The integration will allow users to interact with ChatGPT via WhatsApp text messages, providing automated responses based on their questions and commands with message history saved on Firebase Realtime Database. You can also set the personality of bot to Funny, Genius or anything you like.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -41,9 +41,13 @@ Use the following rules for Firebase Realtime Database to allow access and preve
 
 ```bash
   {
-  "rules": {
-    ".read": true,
-    ".write": "newData.exists()"
+    "rules":{
+        ".read":false,
+        ".write":false,
+        "$phone":{
+          ".read":true,
+          ".write":"newData.exists()"
+        }
     }
   }
 ```
