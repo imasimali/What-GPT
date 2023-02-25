@@ -1,5 +1,5 @@
 import { readUserData } from "./firebaseDB.js";
-export const AI_NAME = "SAVAGE-AI";
+export const AI_NAME = `${process.env.BOT_PERSONALITY} BOT`;
 
 export const getUserID = (userID) => {
   if (userID.includes("-")) {

@@ -23,6 +23,10 @@
       "required": true,
       "value": ""
     },
+    "BOT_PERSONALITY": {
+      "required": true,
+      "value": ""
+    },
     "BOT_NUMBER": {
       "required": true,
       "value": ""

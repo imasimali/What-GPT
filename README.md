@@ -19,6 +19,16 @@ Clone this project with the command:
 ```
 
 Create a Firebase Project. Goto Realtime Database and Enable it. Copy the Database URL and API key from Project Settings.
+Use the following rules for Firebase Realtime Database to prevent deletion.
+
+```bash
+  {
+  "rules": {
+    ".read": true,
+    ".write": "newData.exists()"
+    }
+  }
+```
 
 Also get OpenAI api keys for .env from [OpenAI](https://platform.openai.com/account/api-keys/).
 
