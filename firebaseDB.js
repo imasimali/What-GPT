@@ -38,6 +38,8 @@ export const writeUserData = async function (
     sender,
     response,
     timestamp: serverTimestamp(),
+  }).catch((error) => {
+    console.error(error);
   });
 };
 
