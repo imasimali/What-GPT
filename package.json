@@ -2,16 +2,26 @@
   "name": "what-gpt",
   "version": "1.0.0",
   "description": "Whatsapp bot for GPT-3. Made with Venom and OpenAI.",
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "gpt-3",
+    "openai",
+    "dall-e",
+    "api",
+    "venombot"
+  ],
+  "author": "Asim Ali <hi@asimali.net>",
+  "repository": "https://github.com/imasimali/what-gpt",
+  "license": "Apache-2.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "Asim Ali <hi@asimali.net>",
-  "license": "Apache-2.0",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "express": " ^4.17.1 ",
+    "express": "^4.18.2",
     "firebase": "^9.17.1",
     "openai": "^3.1.0",
     "venom-bot": "^4.3.7"
