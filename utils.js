@@ -33,7 +33,7 @@ export const getHistory = async (userID, messageSender, question) => {
   }
 
   // Add current question to conversation history
-  conversation_history += `${getUserID(messageSender)}: ${question.trim()}\n`;
+  conversation_history += `${messageSender}: ${question.trim()}\n`;
 
   // trim the conversation history to less than 4000 tokens for GPT-3
   if (conversation_history.split(" ").length > 2000) {

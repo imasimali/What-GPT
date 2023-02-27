@@ -36,13 +36,15 @@ const commands = (client, message) => {
     case botCommands.davinci3:
       const question = message.text.substring(message.text.indexOf(" "));
       try {
-        getDavinciResponse(question, message.from).then((response) => {
-          // Check if the message is from the bot or the user
-          client.sendText(
-            message.from === BOT_NUMBER ? message.to : message.from,
-            response
-          );
-        });
+        getDavinciResponse(question, message.sender.displayName).then(
+          (response) => {
+            // Check if the message is from the bot or the user
+            client.sendText(
+              message.from === BOT_NUMBER ? message.to : message.from,
+              response
+            );
+          }
+        );
       } catch (error) {
         console.error(error);
       }
