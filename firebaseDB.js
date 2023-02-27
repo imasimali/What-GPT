@@ -29,15 +29,14 @@ export const writeUserData = async function (
   response
 ) {
   const user = getUserID(userId);
-  const sender = getUserID(messageSender);
 
   const msgListRef = ref(db, user + "/");
   const newMsgRef = push(msgListRef);
   set(newMsgRef, {
     question: question.trim(),
-    sender,
-    response,
+    sender: messageSender,
     timestamp: serverTimestamp(),
+    response,
   }).catch((error) => {
     console.error(error);
   });
