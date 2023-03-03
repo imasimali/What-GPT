@@ -3,7 +3,8 @@
 The integration will allow users to interact with ChatGPT via WhatsApp text messages, providing automated responses based on their questions and commands with message history saved on Firebase Realtime Database. You can also set the personality of bot to Funny, Genius or anything you like.
 
 [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/O0sK_O?referralCode=6Ax_Sv)
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/W5QDDg?referralCode=6Ax_Sv)
 
 ## Technologies
 
