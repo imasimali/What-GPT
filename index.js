@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import { create } from "venom-bot";
+import { browserArgs } from "./venom-options.js";
 import { getDavinciResponse, getDalleResponse, BOT_NUMBER } from "./openAI.js";
 
 // Start Express Server
@@ -18,6 +19,7 @@ app.listen(port, () => console.log(`App listening on port ${port}!`));
 create({
   session: "Chat-GPT",
   multidevice: true,
+  ...browserArgs,
 })
   .then((client) => start(client))
   .catch((error) => {
