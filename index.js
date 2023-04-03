@@ -32,11 +32,11 @@ const commands = (client, message) => {
     dalle: "/img",
   };
 
-  let firstWord = message.text.substring(0, message.text.indexOf(" "));
+  let firstWord = message.content.substring(0, message.content.indexOf(" "));
 
   switch (firstWord) {
     case botCommands.davinci3:
-      const question = message.text.substring(message.text.indexOf(" "));
+      const question = message.content.substring(message.content.indexOf(" "));
       try {
         getDavinciResponse(question, message.sender.displayName).then(
           (response) => {
@@ -53,7 +53,9 @@ const commands = (client, message) => {
       break;
 
     case botCommands.dalle:
-      const imgDescription = message.text.substring(message.text.indexOf(" "));
+      const imgDescription = message.content.substring(
+        message.content.indexOf(" ")
+      );
       try {
         getDalleResponse(imgDescription, message).then((imgUrl) => {
           client
