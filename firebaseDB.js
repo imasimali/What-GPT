@@ -50,14 +50,14 @@ export const readUserData = async function (userId) {
       if (snapshot.exists()) {
         return snapshot.val();
       } else {
-        return `{
-          'INITIAL': {
-            sender: ${AI_NAME},
+        return {
+          INITIAL: {
+            sender: `${AI_NAME}`,
             question: "Hello",
             response:
               "Hi, I'm here to answer your questions.",
           },
-        }`;
+        };
       }
     })
     .catch((error) => {
