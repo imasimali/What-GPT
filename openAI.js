@@ -35,7 +35,7 @@ export const getDavinciResponse = async (clientText, messageSender) => {
     response.data.choices.forEach(({ text }) => {
       botResponse += text;
     });
-    // trim the Friendly-AI name from the response
+    // Trim the Friendly-AI name from the response
     botResponse = botResponse.replace(AI_NAME + ":", "");
 
     // Save the conversation history to the database if the FIREBASE_DB_URL is set
