@@ -1,5 +1,5 @@
 {
-  "name": "what-gpt",
+  "name": "What-GPT",
   "version": "1.0.0",
   "description": "Whatsapp bot AI. Made with WhatsappWeb.js, ChatGPT and DALL-E.",
   "keywords": [
@@ -11,7 +11,7 @@
     "api"
   ],
   "author": "Asim Ali <hi@asimali.net>",
-  "repository": "https://github.com/imasimali/what-gpt",
+  "repository": "https://github.com/imasimali/What-GPT",
   "license": "Apache-2.0",
   "main": "index.js",
   "type": "module",
