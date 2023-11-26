@@ -131,4 +131,5 @@ dist
 
 # my ignore
 package-lock.json
-tokens/
+.wwebjs_auth
+.wwebjs_cache

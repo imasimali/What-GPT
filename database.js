@@ -12,7 +12,6 @@ import {
   limitToLast,
   serverTimestamp,
 } from "firebase/database";
-import { getUserID, AI_NAME } from "./utils.js";
 
 const firebase_app =
   process.env.FIREBASE_DB_URL &&
@@ -22,19 +21,11 @@ const firebase_app =
 
 const db = process.env.FIREBASE_DB_URL && getDatabase(firebase_app);
 
-export const writeUserData = async function (
-  userId,
-  messageSender,
-  question,
-  response
-) {
-  const user = getUserID(userId);
-
-  const msgListRef = ref(db, user + "/");
+export const writeUserData = async function (sender_id, sender_text, response) {
+  const msgListRef = ref(db, sender_id + "/");
   const newMsgRef = push(msgListRef);
   set(newMsgRef, {
-    question: question.trim(),
-    sender: messageSender,
+    question: sender_text.trim(),
     timestamp: serverTimestamp(),
     response,
   }).catch((error) => {
@@ -42,22 +33,12 @@ export const writeUserData = async function (
   });
 };
 
-export const readUserData = async function (userId) {
-  const user = getUserID(userId);
+export const readUserData = async function (sender_id) {
   const userDBRef = query(ref(db), limitToLast(50));
-  const response = await get(child(userDBRef, user + "/"))
+  const response = await get(child(userDBRef, sender_id + "/"))
     .then((snapshot) => {
       if (snapshot.exists()) {
         return snapshot.val();
-      } else {
-        return {
-          INITIAL: {
-            sender: `${AI_NAME}`,
-            question: "Hello",
-            response:
-              "Hi, I'm here to answer your questions.",
-          },
-        };
       }
     })
     .catch((error) => {

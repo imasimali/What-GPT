@@ -1,26 +1,21 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import { Configuration, OpenAIApi } from "openai";
-import { writeUserData } from "./firebaseDB.js";
+import { writeUserData } from "./database.js";
 import { getHistory, AI_NAME } from "./utils.js";
 
-export const BOT_NUMBER = process.env.BOT_NUMBER + "@c.us";
-
 const configuration = new Configuration({
-  organization: process.env.ORGANIZATION_ID,
   apiKey: process.env.OPENAI_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
 
-export const getDavinciResponse = async (clientText, messageSender) => {
-  const conversation_history = await getHistory(
-    BOT_NUMBER,
-    messageSender,
-    clientText
-  ).catch((error) => {
-    console.error(error);
-  });
+export const getGPTresponse = async (sender_text, sender_id) => {
+  const conversation_history = await getHistory(sender_id, sender_text).catch(
+    (error) => {
+      console.error(error);
+    }
+  );
 
   const options = {
     model: "text-davinci-003", // GPT model to use
@@ -40,17 +35,18 @@ export const getDavinciResponse = async (clientText, messageSender) => {
 
     // Save the conversation history to the database if the FIREBASE_DB_URL is set
     process.env.FIREBASE_DB_URL &&
-      writeUserData(BOT_NUMBER, messageSender, clientText, botResponse.trim());
+      writeUserData(sender_id, sender_text, botResponse.trim());
 
-    return `Chat GPT 🤖\n\n${botResponse.trim()}`;
+    return botResponse.trim();
   } catch (e) {
-    return `❌ OpenAI Response Error: ${e.response.data.error.message}`;
+    console.error(e);
+    return `❌ OpenAI Response Error: ${e.response?.data?.error?.message}`;
   }
 };
 
-export const getDalleResponse = async (clientText) => {
+export const getDalleResponse = async (sender_text) => {
   const options = {
-    prompt: clientText, // Image description
+    prompt: sender_text, // Image description
     n: 1, // // Number of images to be generated
     size: "1024x1024", // Image size
   };
