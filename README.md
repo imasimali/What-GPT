@@ -1,6 +1,6 @@
-# what-gpt
+# What-GPT
 
-The integration will allow users to interact with ChatGPT via WhatsApp text messages, providing automated responses based on their questions and commands with message history saved on Firebase Realtime Database. You can also set the personality of bot to Funny, Genius or anything you like.
+This bot allows users to interact with ChatGPT & DALL-E via WhatsApp text messages, providing automated responses based on their questions, and commands with message history saved on Firebase Realtime Database. It allows to generate images with Dall-E with prompts given inside whatsapp. It also allows to set the personality of bot to Funny, Genius or anything you like.
 
 [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -9,7 +9,7 @@ The integration will allow users to interact with ChatGPT via WhatsApp text mess
 ## Technologies
 
 - [OpenAI](https://beta.openai.com/)
-- [Venom-Bot](https://github.com/orkestral/venom/)
+- [Whatsapp-Web](https://github.com/pedroslopez/whatsapp-web.js/)
 - [Firebase-RTDB](https://console.firebase.google.com/)
 
 ## Run the project
@@ -20,7 +20,7 @@ Clone this project with the command:
   git clone https://github.com/imasimali/what-gpt.git
 ```
 
-Get OpenAI api keys for .env from [OpenAI](https://platform.openai.com/account/api-keys/).
+Get OpenAI api key for .env from [OpenAI](https://platform.openai.com/account/api-keys/).
 
 Go to the .env.example file and rename it to .env, and change the necessary values ​​for it to work.
 

@@ -1,15 +1,14 @@
 {
   "name": "what-gpt",
   "version": "1.0.0",
-  "description": "Whatsapp bot for GPT-3. Made with Venom and OpenAI.",
+  "description": "Whatsapp bot AI. Made with WhatsappWeb.js, ChatGPT and DALL-E.",
   "keywords": [
     "whatsapp",
     "bot",
     "gpt-3",
     "openai",
     "dall-e",
-    "api",
-    "venombot"
+    "api"
   ],
   "author": "Asim Ali <hi@asimali.net>",
   "repository": "https://github.com/imasimali/what-gpt",
